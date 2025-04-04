@@ -1,9 +1,25 @@
 import { createBrowserRouter } from 'react-router-dom';
+import SideNav from './Home/SideNav'; './Home/SideNav'
+import Section1 from './Home/Section1'    
+import  Filters from './Home/Filters'
+import Tasks from './Home/Tasks'
+import './Routingmodule.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const Routes = createBrowserRouter ([
     {
         path: "/",
-        element: <div><p>Home Page</p></div>
+        element: <>
+        <div className='containers'>
+        <SideNav />
+       <div className='item'>
+       <Section1 />
+       <Filters />
+       <Tasks />
+       </div>
+      </div>
+      </>
     },
     {
         path: "a",
