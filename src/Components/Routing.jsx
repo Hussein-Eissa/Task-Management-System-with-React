@@ -11,15 +11,15 @@ const Routes = createBrowserRouter ([
     {
         path: "/",
         element: <>
-        <div className='containers'>
-        <SideNav />
-       <div className='item'>
-       <Section1 />
-       <Filters />
-       <Tasks />
-       </div>
-      </div>
-      </>
+                    <div className='containers'>
+                        <SideNav />
+                        <div className='item'>
+                            <Section1 />
+                            <Filters />
+                            <Tasks />
+                        </div>
+                    </div>
+                </>
     },
     {
         path: "a",
