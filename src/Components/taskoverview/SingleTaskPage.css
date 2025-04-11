@@ -1,0 +1,125 @@
+.single-task-container {
+  background: linear-gradient(135deg, #a3bffa 0%, #f8f9fa 100%);
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-task-card {
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-header {
+  background-color: #a3bffa;
+  padding: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.go-back-btn {
+  background-color: #fff;
+  color: #a3bffa;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 8px 20px;
+}
+
+.card-title {
+  /* color: #fff; */
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-body {
+  padding: 30px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.card-body strong {
+  color: #a3bffa;
+}
+
+.status-completed {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.status-not-completed {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.priority-high {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.priority-not-high {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.keyword-tag {
+  background-color: #a3bffa;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background-color: #a3bffa;
+  border-color: #a3bffa;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #8aa7f7;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+}
+
+.task-card-title::before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
