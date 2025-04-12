@@ -1,18 +1,23 @@
 import React from 'react'
+import { FaTasks } from "react-icons/fa";
+
 import styles from './styles/Filters.module.css'
 const Filters = () => {
     return (
         <div>
+             {/* <div className='container-fluid' >
+                    <div className={styles.nav}> <h2  ><FaTasks /> TaskManager</h2></div>
+             </div> */}
             <div className='text-center'>
                 <h1> Filters </h1>
             </div>
             <table className='table table-bordered justify-content-center align-items-center' style={{width: "100%", height: "100px"}}>
-                <tr>
+                <tr style={{fontFamily: 'Cairo', fontSize: 20}}>
                     <th>State</th>
                     <th>Priority</th>
                     <th>Date</th>
                 </tr>
-                <tbody>
+                <tbody> 
                     <tr>
                         <td><div>
                             <div>

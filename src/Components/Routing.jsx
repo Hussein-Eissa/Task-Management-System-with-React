@@ -1,54 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import SideNav from "./Home/SideNav";
-("./Home/SideNav");
-import Section from "./Home/Section";
-import Filters from "./Home/Filters";
-import Tasks from "./Home/Tasks";
 import "./Routingmodule.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import SingleTaskPage from "./taskoverview/SingleTaskPage"; // استيراد SingleTaskPage
+import Home from "../pages/Home";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <div className="containers">
-          <SideNav />
-          <div className="item">
-            <Section/>
-            <Filters />
-            <Tasks />
-          </div>
-        </div>
-      </>
-    ),
+    element: <Home/>,
   },
-  {
-    path: "a",
-    element: (
-      <div>
-        <p>About Page</p>
-      </div>
-    ),
-  },
-  {
-    path: "d",
-    element: (
-      <div>
-        <p>Dashboard Page</p>
-      </div>
-    ),
-  },
-  {
-    path: "c",
-    element: (
-      <div>
-        <p>Contact Page</p>
-      </div>
-    ),
-  },
+ 
   {
     path: "task/:id", // الـ route بتاع SingleTaskPage مع ID ديناميكي
     element: <SingleTaskPage />,

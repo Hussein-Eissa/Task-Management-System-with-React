@@ -53,33 +53,6 @@
         }
       ],
       "details": "task two is good"
-    },
-    {
-      "id": "be82",
-      "name": "task three",
-      "category": "programing",
-      "priority": "High",
-      "date": "2025-05-05",
-      "status": "Completed",
-      "keywords": [
-        {
-          "text": "php",
-          "color": "#ff6f61"
-        },
-        {
-          "text": "database",
-          "color": "#6b7280"
-        },
-        {
-          "text": "c#",
-          "color": "#6b7280"
-        },
-        {
-          "text": "sql",
-          "color": "#6b7280"
-        }
-      ],
-      "details": "task three is good"
     }
   ]
 }

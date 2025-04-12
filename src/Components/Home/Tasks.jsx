@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles/Tasks.module.css';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { FaSearch } from "react-icons/fa";
 import Modal from './modal';
 import './styles/Modal.css';
 
@@ -120,16 +123,36 @@ const Tasks = () => {
       `Viewing task: ${task.name}\nPriority: ${task.priority}\nDate: ${task.date}`
     );
   };
+  // const navigate = useNavigate();
+
+  // const handleView = (taskId) => {
+  //   // الانتقال إلى صفحة التفاصيل مع تمرير معرف المهمة
+  //   navigate(`/tasks/${taskId}`, { 
+  //     state: { from: 'tasks-list' } // بيانات إضافية اختيارية
+  //   });
+  // };
+
 
   return (
     <div>
       <ToastContainer />
       <div>
+      {/* <div className="d-flex justify-content-center py-3">
+          <input
+            type="search"
+            className="form-control w-75 m-3 p-2"
+            placeholder="Search...."
+            style={{fontFamily: 'Cairo', fontSize: 20}}
+            
+
+          />
+          <FaSearch />
+        </div> */}
         <div className="d-flex justify-content-center mt-4">
           <button
             className={styles.editBtn}
             onClick={() => setIsModalOpen(true)}
-            style={{ fontWeight: 'bold', fontSize: 20, border: 'solid 1px black' }}
+            style={{ fontWeight: 'bold', fontSize: 20, border: 'none',maxWidth: '75%',marginBottom: "20px "}}
           >
             <MdAddCircleOutline /> Add Task
           </button>
@@ -141,21 +164,19 @@ const Tasks = () => {
             setNewTask={setNewTask}
             handleAddTask={handleAddTask}
             closeModal={() => setIsModalOpen(false)}
+            
           />
         )}
       </div>
       <div>
-        <div className="d-flex justify-content-center py-3">
-          <input
-            type="search"
-            className="form-control w-75 m-3 p-2"
-            placeholder="Search...."
-          />
-        </div>
+        
+
+
+
         {loading ? (
-          <p>Loading tasks...</p>
+          <p style={{fontFamily: 'Cairo', fontSize: 20}}>Loading tasks...</p>
         ) : tasks.length === 0 ? (
-          <p>No tasks available.</p>
+          <p style={{fontFamily: 'Cairo', fontSize: 20}} >No tasks available.</p>
         ) : (
           <table className="table table-bordered text-center">
             <thead>
