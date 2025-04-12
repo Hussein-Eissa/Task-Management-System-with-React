@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import styles from './styles/Tasks.module.css';
-import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-import { MdAddCircleOutline } from 'react-icons/md';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "./styles/Tasks.module.css";
+import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { MdAddCircleOutline } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
-import Modal from './modal';
-import './styles/Modal.css';
+import Modal from "./modal";
+import "./styles/Modal.css";
 
-const API_URL = 'http://localhost:3000/tasks';
+const API_URL = "http://localhost:3000/tasks";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -19,14 +19,16 @@ const Tasks = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTask, setNewTask] = useState({
-    name: '',
-    category: '',
-    priority: 'Medium',
-    date: '',
-    status: '',
+    name: "",
+    category: "",
+    priority: "Medium",
+    date: "",
+    status: "",
     keywords: [],
-    details: '', // أضفنا حقل details هنا
+    details: "",
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTasks();
@@ -37,7 +39,7 @@ const Tasks = () => {
       const response = await axios.get(API_URL);
       setTasks(response.data);
     } catch (error) {
-      toast.error('Error fetching tasks');
+      toast.error("Error fetching tasks");
       console.error(error);
     } finally {
       setLoading(false);
@@ -52,17 +54,17 @@ const Tasks = () => {
     const taskToUpdate = tasks.find((task) => task.id === id);
 
     if (!taskToUpdate.name || !taskToUpdate.date) {
-      toast.warn('Please fill all required fields');
+      toast.warn("Please fill all required fields");
       return;
     }
 
     try {
       await axios.put(`${API_URL}/${id}`, taskToUpdate);
-      toast.success('Task updated successfully');
+      toast.success("Task updated successfully");
       fetchTasks();
       setEditingTaskId(null);
     } catch (error) {
-      toast.error('Error updating task');
+      toast.error("Error updating task");
       console.error(error);
     }
   };
@@ -70,19 +72,17 @@ const Tasks = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
-      toast.success('Task deleted');
+      toast.success("Task deleted");
       setTasks((prev) => prev.filter((task) => task.id !== id));
     } catch (error) {
-      toast.error('Error deleting task');
+      toast.error("Error deleting task");
       console.error(error);
     }
   };
 
   const handleChange = (id, field, value) => {
     setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, [field]: value } : task
-      )
+      prev.map((task) => (task.id === id ? { ...task, [field]: value } : task))
     );
   };
 
@@ -93,51 +93,41 @@ const Tasks = () => {
       !newTask.category ||
       !newTask.status
     ) {
-      toast.warn('Please fill all required fields (Name, Category, Date, Status)');
+      toast.warn(
+        "Please fill all required fields (Name, Category, Date, Status)"
+      );
       return;
     }
 
     try {
       await axios.post(API_URL, newTask);
-      toast.success('Task added');
+      toast.success("Task added");
       setNewTask({
-        name: '',
-        category: '',
-        priority: 'Medium',
-        date: '',
-        status: '',
+        name: "",
+        category: "",
+        priority: "Medium",
+        date: "",
+        status: "",
         keywords: [],
-        details: '', // أضفنا حقل details هنا
+        details: "", // أضفنا حقل details هنا
       });
       setIsModalOpen(false);
       fetchTasks();
     } catch (error) {
-      toast.error('Error adding task');
+      toast.error("Error adding task");
       console.error(error);
     }
   };
 
   const handleView = (id) => {
-    const task = tasks.find((task) => task.id === id);
-    toast.info(
-      `Viewing task: ${task.name}\nPriority: ${task.priority}\nDate: ${task.date}`
-    );
+    navigate(`/task/${id}`);
   };
-  // const navigate = useNavigate();
-
-  // const handleView = (taskId) => {
-  //   // الانتقال إلى صفحة التفاصيل مع تمرير معرف المهمة
-  //   navigate(`/tasks/${taskId}`, { 
-  //     state: { from: 'tasks-list' } // بيانات إضافية اختيارية
-  //   });
-  // };
-
 
   return (
     <div>
       <ToastContainer />
       <div>
-      {/* <div className="d-flex justify-content-center py-3">
+        {/* <div className="d-flex justify-content-center py-3">
           <input
             type="search"
             className="form-control w-75 m-3 p-2"
@@ -152,7 +142,13 @@ const Tasks = () => {
           <button
             className={styles.editBtn}
             onClick={() => setIsModalOpen(true)}
-            style={{ fontWeight: 'bold', fontSize: 20, border: 'none',maxWidth: '75%',marginBottom: "20px "}}
+            style={{
+              fontWeight: "bold",
+              fontSize: 20,
+              border: "none",
+              maxWidth: "75%",
+              marginBottom: "20px ",
+            }}
           >
             <MdAddCircleOutline /> Add Task
           </button>
@@ -164,19 +160,16 @@ const Tasks = () => {
             setNewTask={setNewTask}
             handleAddTask={handleAddTask}
             closeModal={() => setIsModalOpen(false)}
-            
           />
         )}
       </div>
       <div>
-        
-
-
-
         {loading ? (
-          <p style={{fontFamily: 'Cairo', fontSize: 20}}>Loading tasks...</p>
+          <p style={{ fontFamily: "Cairo", fontSize: 20 }}>Loading tasks...</p>
         ) : tasks.length === 0 ? (
-          <p style={{fontFamily: 'Cairo', fontSize: 20}} >No tasks available.</p>
+          <p style={{ fontFamily: "Cairo", fontSize: 20 }}>
+            No tasks available.
+          </p>
         ) : (
           <table className="table table-bordered text-center">
             <thead>
@@ -196,10 +189,10 @@ const Tasks = () => {
                     {editingTaskId === task.id ? (
                       <input
                         type="text"
-                        value={task.name || ''}
+                        value={task.name || ""}
                         className={styles.inputTitle}
                         onChange={(e) =>
-                          handleChange(task.id, 'name', e.target.value)
+                          handleChange(task.id, "name", e.target.value)
                         }
                       />
                     ) : (
@@ -209,10 +202,10 @@ const Tasks = () => {
                   <td>
                     {editingTaskId === task.id ? (
                       <select
-                        value={task.priority || 'Medium'}
+                        value={task.priority || "Medium"}
                         className={styles.select}
                         onChange={(e) =>
-                          handleChange(task.id, 'priority', e.target.value)
+                          handleChange(task.id, "priority", e.target.value)
                         }
                       >
                         <option value="High">High</option>
@@ -230,11 +223,11 @@ const Tasks = () => {
                         value={
                           task.date
                             ? new Date(task.date).toISOString().slice(0, 10)
-                            : ''
+                            : ""
                         }
                         className={styles.date}
                         onChange={(e) =>
-                          handleChange(task.id, 'date', e.target.value)
+                          handleChange(task.id, "date", e.target.value)
                         }
                       />
                     ) : (
@@ -247,14 +240,14 @@ const Tasks = () => {
                         className={styles.editBtn}
                         onClick={() => handleSave(task.id)}
                       >
-                        <FaEdit style={{ color: 'blue' }} /> save
+                        <FaEdit style={{ color: "blue" }} /> save
                       </button>
                     ) : (
                       <button
                         className={styles.editBtn}
                         onClick={() => handleEdit(task.id)}
                       >
-                        <FaEdit style={{ color: 'blue' }} /> edit
+                        <FaEdit style={{ color: "blue" }} /> edit
                       </button>
                     )}
                   </td>
@@ -263,7 +256,7 @@ const Tasks = () => {
                       className={styles.deleteBtn}
                       onClick={() => handleDelete(task.id)}
                     >
-                      <FaTrash style={{ color: 'red' }} /> delete
+                      <FaTrash style={{ color: "red" }} /> delete
                     </button>
                   </td>
                   <td>
@@ -271,7 +264,7 @@ const Tasks = () => {
                       className={styles.editBtn}
                       onClick={() => handleView(task.id)}
                     >
-                      <FaEye style={{ color: 'green' }} /> details
+                      <FaEye style={{ color: "green" }} /> details
                     </button>
                   </td>
                 </tr>
@@ -285,10 +278,3 @@ const Tasks = () => {
 };
 
 export default Tasks;
-
-
-
-
-
-
-

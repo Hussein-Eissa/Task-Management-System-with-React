@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -9,19 +11,47 @@ import "./SingleTaskPage.css";
 
 const SingleTaskPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [task, setTask] = useState(null);
 
-  const task = {
-    id: id || 132,
-    name: "T1",
-    status: "Completed",
-    priority: "High",
-    dueDate: "1/2/2027",
-    category: "Programming",
-    keywords: ["HTML", "CSS", "JS"],
-    details: "",
+  useEffect(() => {
+    const fetchTask = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/tasks/${id}`);
+        setTask(response.data);
+      } catch (error) {
+        console.error("Error fetching task:", error);
+        // If task not found, use default data
+        setTask({
+          id: id,
+          name: "Task " + id,
+          status: "Not Started",
+          priority: "Medium",
+          dueDate: new Date().toLocaleDateString(),
+          category: "General",
+          keywords: [],
+          details: "No details available",
+        });
+      }
+    };
+
+    fetchTask();
+  }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/tasks/${id}`);
+      toast.success("Task deleted successfully");
+      navigate(-1); // Go back to previous page
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      toast.error("Failed to delete task");
+    }
   };
 
-  // const apiLink = "YOUR_API_LINK_HERE"; // Replace with your actual API link
+  if (!task) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container fluid className="single-task-container">
@@ -32,7 +62,7 @@ const SingleTaskPage = () => {
               <Button
                 variant="light"
                 className="go-back-btn"
-                onClick={() => console.log("Go Back Clicked")}
+                onClick={() => navigate(-1)}
               >
                 <FaArrowLeft style={{ marginRight: "5px" }} /> Go Back
               </Button>
@@ -79,18 +109,27 @@ const SingleTaskPage = () => {
             </Col>
             <Col md={6}>
               <p>
-                <strong>Due Date:</strong> {task.dueDate}
+                <strong>Due Date:</strong>{" "}
+                {task.date || task.dueDate || "No date available"}
               </p>
               <p>
                 <strong>Category:</strong> {task.category}
               </p>
               <p>
                 <strong>Keywords:</strong>{" "}
-                {task.keywords.map((keyword, index) => (
-                  <span key={index} className="keyword-tag">
-                    {keyword}
-                  </span>
-                ))}
+                {task.keywords &&
+                  task.keywords.map((keyword, index) => (
+                    <span
+                      key={index}
+                      className="keyword-tag"
+                      style={{
+                        backgroundColor: keyword.color || "#a3bffa",
+                        color: "#fff",
+                      }}
+                    >
+                      {keyword.text || keyword}
+                    </span>
+                  ))}
               </p>
             </Col>
           </Row>
@@ -107,14 +146,14 @@ const SingleTaskPage = () => {
             <Col className="d-flex justify-content-between">
               <Button
                 className="edit-btn"
-                onClick={() => console.log("Edit Clicked")}
+                onClick={() => navigate(`/task/${id}/edit`)}
               >
                 Edit
               </Button>
               <Button
                 variant="danger"
                 className="delete-btn"
-                onClick={() => console.log("Delete Clicked")}
+                onClick={handleDelete}
               >
                 Delete
               </Button>
