@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import SideNav from "./Home/SideNav";
 ("./Home/SideNav");
-import Section1 from "./Home/Section1";
+import Section from "./Home/Section";
 import Filters from "./Home/Filters";
 import Tasks from "./Home/Tasks";
 import "./Routingmodule.css";
@@ -17,7 +17,7 @@ const Routes = createBrowserRouter([
         <div className="containers">
           <SideNav />
           <div className="item">
-            <Section1 />
+            <Section/>
             <Filters />
             <Tasks />
           </div>
