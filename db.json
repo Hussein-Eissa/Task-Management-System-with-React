@@ -4,7 +4,7 @@
       "id": "332a",
       "name": "task one",
       "category": "programing",
-      "priority": "Low",
+      "priority": "High",
       "date": "2025-01-01",
       "status": "To Do",
       "keywords": [
@@ -32,27 +32,54 @@
       "details": "task one is good"
     },
     {
-      "id": "838e",
+      "id": "9d2d",
       "name": "task two",
-      "category": "it",
+      "category": "programing",
       "priority": "Medium",
-      "date": "2025-01-03",
+      "date": "2025-04-10",
       "status": "In Progress",
       "keywords": [
         {
-          "text": "ccna",
-          "color": "#f06292"
+          "text": "sql",
+          "color": "#ff6f61"
         },
         {
-          "text": "ccnp",
-          "color": "#f06292"
+          "text": "php",
+          "color": "#6b7280"
         },
         {
-          "text": "mcsa",
-          "color": "#ffcc5c"
+          "text": "database",
+          "color": "#6b7280"
         }
       ],
-      "details": "task two is good"
+      "details": "task is good"
+    },
+    {
+      "id": "8b98",
+      "name": "task three",
+      "category": "programing",
+      "priority": "Low",
+      "date": "2025-04-02",
+      "status": "Completed",
+      "keywords": [
+        {
+          "text": "bootstrap ",
+          "color": "#6b7280"
+        },
+        {
+          "text": "react",
+          "color": "#88d8b0"
+        },
+        {
+          "text": "html",
+          "color": "#88d8b0"
+        },
+        {
+          "text": "frontend",
+          "color": "#88d8b0"
+        }
+      ],
+      "details": "task is good"
     }
   ]
 }

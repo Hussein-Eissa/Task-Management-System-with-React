@@ -39,3 +39,11 @@
   .close:hover svg {
     color: red; /* اللون لما نعمل hover */
   }
+  .modal-body {
+    max-height: 70vh; /* ارتفاع أقصى للـ body مع scroll */
+    overflow-y: auto; /* تفعيل الـ scroll داخل الـ Modal */
+  }
+  
+  .tag {
+    display: inline-block; /* عشان الـ tags تظهر بشكل صحيح */
+  }
