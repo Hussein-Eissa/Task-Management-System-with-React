@@ -1,41 +1,10 @@
 {
   "tasks": [
     {
-      "id": "332a",
+      "id": "9d2d",
       "name": "task one",
       "category": "programing",
       "priority": "High",
-      "date": "2025-01-01",
-      "status": "To Do",
-      "keywords": [
-        {
-          "text": "html ",
-          "color": "#6b7280"
-        },
-        {
-          "text": "css",
-          "color": "#6b7280"
-        },
-        {
-          "text": "js",
-          "color": "#ffcc5c"
-        },
-        {
-          "text": "reactjs",
-          "color": "#f06292"
-        },
-        {
-          "text": "nextjs",
-          "color": "#ffcc5c"
-        }
-      ],
-      "details": "task one is good"
-    },
-    {
-      "id": "9d2d",
-      "name": "task two",
-      "category": "programing",
-      "priority": "Medium",
       "date": "2025-04-10",
       "status": "In Progress",
       "keywords": [
@@ -55,28 +24,35 @@
       "details": "task is good"
     },
     {
-      "id": "8b98",
+      "id": "3b35",
       "name": "task three",
       "category": "programing",
-      "priority": "Low",
+      "priority": "Medium",
       "date": "2025-04-02",
       "status": "Completed",
       "keywords": [
         {
-          "text": "bootstrap ",
-          "color": "#6b7280"
-        },
-        {
-          "text": "react",
+          "text": "يضب",
           "color": "#88d8b0"
         },
         {
           "text": "html",
-          "color": "#88d8b0"
-        },
+          "color": "#ffcc5c"
+        }
+      ],
+      "details": "task is good"
+    },
+    {
+      "id": "6674",
+      "name": "task two",
+      "category": "programing",
+      "priority": "Low",
+      "date": "2025-04-10",
+      "status": "To Do",
+      "keywords": [
         {
-          "text": "frontend",
-          "color": "#88d8b0"
+          "text": "sql",
+          "color": "#ffcc5c"
         }
       ],
       "details": "task is good"

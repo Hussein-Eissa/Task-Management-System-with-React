@@ -5,12 +5,9 @@ import TaskItem from './TaskItem';
 const TaskList = ({
   tasks,
   loading,
-  editingTaskId,
   handleEdit,
-  handleSave,
   handleDelete,
   handleView,
-  handleChange,
 }) => {
   return (
     <div>
@@ -35,12 +32,9 @@ const TaskList = ({
               <TaskItem
                 key={task.id}
                 task={task}
-                editingTaskId={editingTaskId}
                 handleEdit={handleEdit}
-                handleSave={handleSave}
                 handleDelete={handleDelete}
                 handleView={handleView}
-                handleChange={handleChange}
               />
             ))}
           </tbody>

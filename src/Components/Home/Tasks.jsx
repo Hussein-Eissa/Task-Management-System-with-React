@@ -12,9 +12,10 @@ const API_URL = 'http://localhost:3000/tasks';
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
-  const [editingTaskId, setEditingTaskId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false); // State لتحديد إذا كنا في وضع التعديل
+  const [taskToEdit, setTaskToEdit] = useState(null); // State لتخزين بيانات المهمة اللي هنعدلها
   const [newTask, setNewTask] = useState({
     name: '',
     category: '',
@@ -43,27 +44,11 @@ const Tasks = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    setEditingTaskId(id);
-  };
-
-  const handleSave = async (id) => {
-    const taskToUpdate = tasks.find((task) => task.id === id);
-
-    if (!taskToUpdate.name || !taskToUpdate.date) {
-      toast.warn('Please fill all required fields');
-      return;
-    }
-
-    try {
-      await axios.put(`${API_URL}/${id}`, taskToUpdate);
-      toast.success('Task updated successfully');
-      fetchTasks();
-      setEditingTaskId(null);
-    } catch (error) {
-      toast.error('Error updating task');
-      console.error(error);
-    }
+  const handleEdit = (task) => {
+    setIsEditing(true); // تفعيل وضع التعديل
+    setTaskToEdit(task); // تخزين بيانات المهمة
+    setNewTask(task); // ملء الحقول في الـ Modal ببيانات المهمة
+    setIsModalOpen(true); // فتح الـ Modal
   };
 
   const handleDelete = async (id) => {
@@ -75,12 +60,6 @@ const Tasks = () => {
       toast.error('Error deleting task');
       console.error(error);
     }
-  };
-
-  const handleChange = (id, field, value) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === id ? { ...task, [field]: value } : task))
-    );
   };
 
   const handleAddTask = async () => {
@@ -116,6 +95,41 @@ const Tasks = () => {
     }
   };
 
+  const handleUpdateTask = async () => {
+    if (
+      !newTask.name ||
+      !newTask.date ||
+      !newTask.category ||
+      !newTask.status
+    ) {
+      toast.warn(
+        'Please fill all required fields (Name, Category, Date, Status)'
+      );
+      return;
+    }
+
+    try {
+      await axios.put(`${API_URL}/${taskToEdit.id}`, newTask);
+      toast.success('Task updated successfully');
+      setNewTask({
+        name: '',
+        category: '',
+        priority: 'Medium',
+        date: '',
+        status: '',
+        keywords: [],
+        details: '',
+      });
+      setIsModalOpen(false);
+      setIsEditing(false);
+      setTaskToEdit(null);
+      fetchTasks();
+    } catch (error) {
+      toast.error('Error updating task');
+      console.error(error);
+    }
+  };
+
   const handleView = (id) => {
     navigate(`/task/${id}`);
   };
@@ -130,19 +144,31 @@ const Tasks = () => {
           newTask={newTask}
           setNewTask={setNewTask}
           handleAddTask={handleAddTask}
-          closeModal={() => setIsModalOpen(false)}
+          handleUpdateTask={handleUpdateTask}
+          closeModal={() => {
+            setIsModalOpen(false);
+            setIsEditing(false);
+            setTaskToEdit(null);
+            setNewTask({
+              name: '',
+              category: '',
+              priority: 'Medium',
+              date: '',
+              status: '',
+              keywords: [],
+              details: '',
+            });
+          }}
+          isEditing={isEditing}
         />
       )}
 
       <TaskList
         tasks={tasks}
         loading={loading}
-        editingTaskId={editingTaskId}
         handleEdit={handleEdit}
-        handleSave={handleSave}
         handleDelete={handleDelete}
         handleView={handleView}
-        handleChange={handleChange}
       />
     </div>
   );
