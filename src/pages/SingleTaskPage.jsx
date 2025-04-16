@@ -4,10 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "./SingleTaskPage.css";
+import "../styles/singleTask/SingleTaskPage.css";
 
 const SingleTaskPage = () => {
   const { id } = useParams();

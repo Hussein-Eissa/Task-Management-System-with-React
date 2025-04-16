@@ -3,8 +3,9 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./TaskOverview.css";
-const TaskOverview = () => {
+import '../styles/tasks/tasksPage.css'
+
+const TasksPage = () => {
   const apiLink = "YOUR_API_LINK_HERE";
 
   const [tasks, setTasks] = useState([
@@ -140,4 +141,4 @@ const TaskOverview = () => {
   );
 };
 
-export default TaskOverview;
+export default TasksPage;

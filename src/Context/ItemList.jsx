@@ -1,9 +1,20 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useModal } from "./CategoryContext";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import CategoryModal from "../Components/Home/CategoryModal";
 
 const ItemList = () => {
-  const { categories, openModal, deleteCategory } = useModal();
+  const { openModal, deleteCategory } = useModal();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/Category")
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error("فشل في جلب البيانات:", err));
+  }, [])
+
+
 
   return (
     <div className="container">
@@ -36,6 +47,7 @@ const ItemList = () => {
           </li>
         ))}
       </ul>
+
     </div>
   );
 };

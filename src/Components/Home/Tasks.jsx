@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddTaskButton from './AddTaskButton';
 import TaskList from './TaskList';
 import Modal from './Modal';
-import './styles/Modal.css';
+import '../../styles/home/Modal.css';
 
 const API_URL = 'http://localhost:3000/tasks';
 

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { FiSearch, FiMenu } from 'react-icons/fi';
-import styles from './styles/Section.module.css'; // تأكد من تعديل المسار حسب هيكل مشروعك
+import styles from '../../styles/home/Section.module.css';
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <nav className={ styles.navbar}>
-      
+    <nav className={styles.navbar}>
+
       <div className={styles.navLeft}>
         <div className={styles.logo}>
-          
+
           <span className={styles.logoIcon}>✓</span>
           <span className={styles.logoText}>TaskManager</span>
         </div>
@@ -19,7 +19,7 @@ const Navbar = () => {
         </button>
       </div>
 
-      
+
       <div className={styles.searchBar}>
         <FiSearch className={styles.searchIcon} />
         <input

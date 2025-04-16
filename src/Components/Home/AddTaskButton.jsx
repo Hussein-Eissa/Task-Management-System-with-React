@@ -1,7 +1,7 @@
 // AddTaskButton.js
 import React from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
-import styles from './styles/Tasks.module.css';
+import styles from '../../styles/home/Tasks.module.css';
 
 const AddTaskButton = ({ onClick }) => {
   return (
