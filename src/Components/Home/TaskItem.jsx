@@ -43,6 +43,12 @@ const TaskItem = ({
       <tr key={task.id}>
         <td>{task.name}</td>
         <td>
+          <span ClassName="badge rounded-pill" 
+            style={{ backgroundColor: '#3ee6bc', color: '#000', padding: '10px 15px', borderRadius: '10px' }}>
+            {task.category}
+          </span>
+        </td>
+        <td>
           <span
             className="badge rounded-pill"
             style={{
@@ -57,12 +63,12 @@ const TaskItem = ({
         <td>{task.date}</td>
         <td>
           <button className={styles.editBtn} onClick={() => handleEdit(task)}>
-            <FaEdit style={{ color: 'blue' }} /> edit
+            <FaEdit style={{ color: 'blue' }} />
           </button>
         </td>
         <td>
           <button className={styles.deleteBtn} onClick={handleShowDeleteModal}>
-            <FaTrash style={{ color: 'red' }} /> delete
+            <FaTrash style={{ color: 'red' }} />
           </button>
         </td>
         <td>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./TaskOverview.css";
@@ -60,6 +61,13 @@ const TaskOverview = () => {
 
   return (
     <Container fluid className="task-overview-container">
+      <Button
+        variant="light"
+        className="go-back-btn"
+        onClick={() => navigate(-1)}
+      >
+        <FaArrowLeft style={{ marginRight: "5px" }} /> Go Back
+      </Button>
       <Row className="mb-4">
         <Col>
           <h2 className="task-overview-title">Task Overview</h2>

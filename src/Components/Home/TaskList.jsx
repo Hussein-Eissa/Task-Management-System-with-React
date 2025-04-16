@@ -16,10 +16,11 @@ const TaskList = ({
       ) : tasks.length === 0 ? (
         <p style={{ fontFamily: 'Cairo', fontSize: 20 }}>No tasks available.</p>
       ) : (
-        <table className="table table-bordered text-center">
+        <table className="table text-center table-borderedless table-hover container-fluid">
           <thead>
             <tr className="fw-bold fs-5">
               <th>Name</th>
+              <th>Category</th>
               <th>Priority</th>
               <th>Date</th>
               <th>Edit</th>

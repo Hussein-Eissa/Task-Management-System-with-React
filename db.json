@@ -18,7 +18,22 @@
         },
         {
           "text": "database",
-          "color": "#6b7280"
+          "color": "#ffcc5c"
+        }
+      ],
+      "details": "task is good"
+    },
+    {
+      "id": "6674",
+      "name": "task two",
+      "category": "programing",
+      "priority": "Low",
+      "date": "2025-04-10",
+      "status": "To Do",
+      "keywords": [
+        {
+          "text": "sql",
+          "color": "#ffcc5c"
         }
       ],
       "details": "task is good"
@@ -41,21 +56,23 @@
         }
       ],
       "details": "task is good"
+    }
+  ],
+  "Category": [
+    {
+      "id": "a562",
+      "text": "CAT1",
+      "color": "#81ff1a"
     },
     {
-      "id": "6674",
-      "name": "task two",
-      "category": "programing",
-      "priority": "Low",
-      "date": "2025-04-10",
-      "status": "To Do",
-      "keywords": [
-        {
-          "text": "sql",
-          "color": "#ffcc5c"
-        }
-      ],
-      "details": "task is good"
+      "id": "f4e3",
+      "text": "CAT2",
+      "color": "#ff6b6b"
+    },
+    {
+      "id": "2a3a",
+      "text": "CAT3",
+      "color": "#0400ff"
     }
   ]
 }

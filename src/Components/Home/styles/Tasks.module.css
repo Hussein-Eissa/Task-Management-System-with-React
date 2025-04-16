@@ -76,3 +76,13 @@ tbody tr td , thead tr th{
     vertical-align: middle;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
 }
+
+
+.T-Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #6366F1 !important;
+}
