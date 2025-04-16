@@ -43,7 +43,7 @@ const TaskItem = ({
       <tr key={task.id}>
         <td>{task.name}</td>
         <td>
-          <span ClassName="badge rounded-pill" 
+          <span className="badge rounded-pill" 
             style={{ backgroundColor: '#3ee6bc', color: '#000', padding: '10px 15px', borderRadius: '10px' }}>
             {task.category}
           </span>

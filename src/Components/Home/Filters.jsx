@@ -12,11 +12,13 @@ const Filters = () => {
                 <h1> Filters </h1>
             </div>
             <table className='table table-bordered justify-content-center align-items-center' style={{width: "100%", height: "100px"}}>
-                <tr style={{fontFamily: 'Cairo', fontSize: 20}}>
-                    <th>State</th>
-                    <th>Priority</th>
-                    <th>Date</th>
-                </tr>
+                <thead>
+                    <tr style={{fontFamily: 'Cairo', fontSize: 20}}>
+                        <th>State</th>
+                        <th>Priority</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
                 <tbody> 
                     <tr>
                         <td><div>
