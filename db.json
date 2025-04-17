@@ -1,29 +1,6 @@
 {
   "tasks": [
     {
-      "id": "9d2d",
-      "name": "task one",
-      "category": "programing",
-      "priority": "High",
-      "date": "2025-04-10",
-      "status": "In Progress",
-      "keywords": [
-        {
-          "text": "sql",
-          "color": "#ff6f61"
-        },
-        {
-          "text": "php",
-          "color": "#6b7280"
-        },
-        {
-          "text": "database",
-          "color": "#ffcc5c"
-        }
-      ],
-      "details": "task is good"
-    },
-    {
       "id": "6674",
       "name": "task two",
       "category": "programing",
@@ -39,23 +16,23 @@
       "details": "task is good"
     },
     {
-      "id": "3b35",
-      "name": "task three",
-      "category": "programing",
+      "id": "4553",
+      "name": "لالالالالالالالالالالا",
+      "category": "Programming",
       "priority": "Medium",
-      "date": "2025-04-02",
-      "status": "Completed",
+      "date": "2025-04-17",
+      "status": "To Do",
       "keywords": [
         {
-          "text": "يضب",
+          "text": "لا",
           "color": "#88d8b0"
         },
         {
-          "text": "html",
+          "text": "لا",
           "color": "#ffcc5c"
         }
       ],
-      "details": "task is good"
+      "details": "لالالالالالالالالا"
     }
   ],
   "Category": [
@@ -73,21 +50,6 @@
       "id": "2a3a",
       "text": "CAT3",
       "color": "#0400ff"
-    },
-    {
-      "id": "4145",
-      "text": "",
-      "color": "#000000"
-    },
-    {
-      "id": "8b37",
-      "text": "",
-      "color": "#000000"
-    },
-    {
-      "id": "6128",
-      "text": "",
-      "color": "#000000"
     }
   ]
 }

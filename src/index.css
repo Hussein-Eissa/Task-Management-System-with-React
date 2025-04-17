@@ -6,7 +6,8 @@
 .containers {
   display: flex;
   width: 100%;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,Courier, monospace;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    Courier, monospace;
 }
 .item {
   display: flex;
