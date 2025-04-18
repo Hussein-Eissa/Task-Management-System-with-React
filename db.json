@@ -33,6 +33,16 @@
         }
       ],
       "details": "لالالالالالالالالا"
+    },
+    {
+      "id": "ced2",
+      "name": "render",
+      "category": "Student",
+      "priority": "Medium",
+      "date": "2242-12-23",
+      "status": "To Do",
+      "keywords": [],
+      "details": "wqf"
     }
   ],
   "Category": [
@@ -45,11 +55,6 @@
       "id": "f4e3",
       "text": "CAT2",
       "color": "#ff6b6b"
-    },
-    {
-      "id": "2a3a",
-      "text": "CAT3",
-      "color": "#0400ff"
     }
   ]
 }

@@ -3,10 +3,12 @@ import Filters from '../Components/Home/Filters'
 import Tasks from '../Components/Home/Tasks'
 import SideNav from '../Components/Home/SideNav'
 import Navbar from '../Components/Home/NavBar'
+import TaskFetcher from '../Components/Home/Search/TaskFetcher'
 
 const HomePage = () => {
   return (
     <div>
+       <TaskFetcher />
       <div className="containers">
         <SideNav />
         <div className="items">

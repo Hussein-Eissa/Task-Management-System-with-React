@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import { Modal, Button } from 'react-bootstrap';
 import styles from '../../styles/home/Tasks.module.css';
-
+import { useTaskContext } from "../../Context/Taskcontext.jsx";
 const TaskItem = ({
   task,
   handleEdit, // دالة جديدة هتفتح الـ Modal مع بيانات المهمة
   handleDelete,
   handleView,
 }) => {
+  
   // تحديد لون الـ badge بناءً على قيمة Priority
   const getPriorityBackgroundColor = (priority) => {
     switch (priority?.toLowerCase()) {
@@ -37,9 +38,14 @@ const TaskItem = ({
     handleDelete(task.id); // تنفيذ دالة الحذف
     handleCloseDeleteModal(); // إغلاق الـ Modal
   };
+  const { filteredTasks } = useTaskContext();
 
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>{error}</p>;
+  // if (filteredTasks.length === 0) return <p>No tasks found.</p>;
   return (
     <>
+    {filteredTasks.map((task) => (
       <tr key={task.id}>
         <td>{task.name}</td>
         <td>
@@ -78,7 +84,7 @@ const TaskItem = ({
         </td>
       </tr>
 
-      {/* Modal التأكيد بتاع الحذف */}
+))}
       <Modal show={showDeleteModal} onHide={handleCloseDeleteModal} centered>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Deletion</Modal.Title>
@@ -95,6 +101,10 @@ const TaskItem = ({
           </Button>
         </Modal.Footer>
       </Modal>
+     
+      
+        
+     
     </>
   );
 };

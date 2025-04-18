@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiSearch, FiMenu } from 'react-icons/fi';
 import styles from '../../styles/home/Section.module.css';
-
+import TaskSearch from './Search/TaskSearch.jsx';
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -22,12 +22,13 @@ const Navbar = () => {
 
       <div className={styles.searchBar}>
         <FiSearch className={styles.searchIcon} />
-        <input
+        {/* <input
           type="text"
           placeholder="Search tasks..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        /> */}
+        <TaskSearch />
       </div>
     </nav>
   );
