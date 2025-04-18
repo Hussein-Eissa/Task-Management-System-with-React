@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { FiAlignJustify, FiX } from "react-icons/fi";
 import { FaHome } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
@@ -7,23 +7,60 @@ import { useModal } from "../../Context/CategoryContext";
 import CategoryModal from "./CategoryModal";
 import ItemList from "../../Context/ItemList";
 import styles from "../../styles/home/SideNav.module.css";
-import { Link } from "react-router-dom";
+
 
 const SideNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  
   const { openModal } = useModal();
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
+  const [isOpen, setIsOpen] = useState(window.innerWidth > 425);  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const updateWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowWidth);
+    return () => window.removeEventListener("resize", updateWindowWidth);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth <= 425) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true); 
+    }
+  }, [windowWidth]);
+
+  // const toggleSideNav = () => {
+  //   setIsOpen(!isOpen);
+  // };
+
+  const toggleSideNav = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  // const togglePopup = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   return (
     <div>
-      <button className={styles.popup} onClick={togglePopup}>
+       <button 
+        className={`${styles.popup} ${styles.toggleButton}`} 
+        onClick={toggleSideNav}
+        aria-label="Toggle navigation menu"
+      >
         {isOpen ? <FiX size={24} /> : <FiAlignJustify size={24} />}
       </button>
-      {isOpen && (
-        <section className={styles.sideNav}>
+      
+      {/* <button className={styles.popup} onClick={togglePopup}>
+        {isOpen ? <FiX size={24} /> : <FiAlignJustify size={24} />}
+      </button> */}
+      {/* {isOpen && ( */}
+        {isOpen && (
+          <section className={styles.sideNav}>
           <div>
             <div>
               <h4 style={{ textAlign: "center", fontSize: "30px" }}> List </h4>
@@ -41,17 +78,18 @@ const SideNav = () => {
                       <CategoryModal />
                     </div>
                   </li>
-                  {/* <li>
-                                        <button className={styles.popup} onClick={() => openModal()} ><FaPlusCircle />  Add Category </button>
-                                    </li> */}
                 </ul>
               </div>
             </div>
           </div>
         </section>
-      )}
+       )} 
     </div>
   );
 };
 
 export default SideNav;
+
+
+
+

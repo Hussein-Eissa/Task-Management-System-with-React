@@ -14,9 +14,9 @@ const Navbar = () => {
           <span className={styles.logoIcon}>✓</span>
           <span className={styles.logoText}>TaskManager</span>
         </div>
-        <button className={styles.menuButton}>
+        {/* <button className={styles.menuButton}>
           <FiMenu size={20} />
-        </button>
+        </button> */}
       </div>
 
 

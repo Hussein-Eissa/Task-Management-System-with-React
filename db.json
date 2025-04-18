@@ -33,6 +33,46 @@
         }
       ],
       "details": "لالالالالالالالالا"
+    },
+    {
+      "id": "0839",
+      "name": "sdv mns ",
+      "category": "eka;vwv",
+      "priority": "Medium",
+      "date": "2025-04-10",
+      "status": "To Do",
+      "keywords": [],
+      "details": "qaV "
+    },
+    {
+      "id": "8630",
+      "name": "sdbvj.ks",
+      "category": "sdv",
+      "priority": "Medium",
+      "date": "2025-04-17",
+      "status": "To Do",
+      "keywords": [],
+      "details": "zvC"
+    },
+    {
+      "id": "f9e9",
+      "name": "abc.SK",
+      "category": "ADKVM",
+      "priority": "Medium",
+      "date": "2025-04-10",
+      "status": "Completed",
+      "keywords": [],
+      "details": "AXMimport { IoIosAddCircle } from \"react-icons/io\";ND/"
+    },
+    {
+      "id": "957e",
+      "name": "X.K BKX",
+      "category": "v FX ",
+      "priority": "Medium",
+      "date": "2025-04-03",
+      "status": "In Progress",
+      "keywords": [],
+      "details": "Xz <"
     }
   ],
   "Category": [
@@ -45,11 +85,6 @@
       "id": "f4e3",
       "text": "CAT2",
       "color": "#ff6b6b"
-    },
-    {
-      "id": "2a3a",
-      "text": "CAT3",
-      "color": "#0400ff"
     }
   ]
 }

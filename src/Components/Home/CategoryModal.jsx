@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { IoIosAddCircle } from "react-icons/io";
 import NewModal from "../common/NewModal";
 import { toast } from "react-toastify";
+import styles from "../../styles/home/CategoryModal.module.css";
 
 const CategoryModal = ({ item }) => {
     const [show, setShow] = useState(false);
@@ -68,7 +70,7 @@ const CategoryModal = ({ item }) => {
 
     return (
         <>
-            <button onClick={() => handleShow()}>add category</button>
+            <button className={styles.btnModal} onClick={() => handleShow()}> <IoIosAddCircle /> add category</button>
 
             <NewModal
                 show={show}
