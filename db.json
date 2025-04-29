@@ -18,7 +18,7 @@
     {
       "id": "4553",
       "name": "لالالالالالالالالالالا",
-      "category": "Programming",
+      "category": "programing",
       "priority": "Medium",
       "date": "2025-04-17",
       "status": "To Do",
@@ -37,7 +37,7 @@
     {
       "id": "0839",
       "name": "sdv mns ",
-      "category": "eka;vwv",
+      "category": "CAT1",
       "priority": "Medium",
       "date": "2025-04-10",
       "status": "To Do",
@@ -47,7 +47,7 @@
     {
       "id": "8630",
       "name": "sdbvj.ks",
-      "category": "sdv",
+      "category": "CAT2",
       "priority": "Medium",
       "date": "2025-04-17",
       "status": "To Do",
@@ -57,7 +57,7 @@
     {
       "id": "f9e9",
       "name": "abc.SK",
-      "category": "ADKVM",
+      "category": "CAT1",
       "priority": "Medium",
       "date": "2025-04-10",
       "status": "Completed",
@@ -67,7 +67,7 @@
     {
       "id": "957e",
       "name": "X.K BKX",
-      "category": "v FX ",
+      "category": "CAT2",
       "priority": "Medium",
       "date": "2025-04-03",
       "status": "In Progress",
@@ -76,6 +76,11 @@
     }
   ],
   "Category": [
+    {
+      "id": "j5a6",
+      "text": "programing",
+      "color": "#1bf4c6"
+    },
     {
       "id": "a562",
       "text": "CAT1",
