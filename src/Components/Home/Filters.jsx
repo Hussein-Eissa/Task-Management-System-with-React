@@ -1,59 +1,88 @@
-import React from 'react'
+import React, { useState } from "react";
 import { FaTasks } from "react-icons/fa";
 
-import styles from '../../styles/home/Filters.module.css'
-const Filters = () => {
-    return (
-        <div>
-            {/* <div className='container-fluid' >
+import styles from "../../styles/home/Filters.module.css";
+
+const Filters = ({ onFilterChange }) => {
+  const [filters, setFilters] = useState({
+    status: "",
+    priority: "",
+    date: "",
+  });
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    const newFilters = { ...filters, [name]: value };
+    setFilters(newFilters);
+    onFilterChange(newFilters);
+  };
+
+  return (
+    <div>
+      {/* <div className='container-fluid' >
                     <div className={styles.nav}> <h2  ><FaTasks /> TaskManager</h2></div>
              </div> */}
-            <div className='text-center'>
-                <h1> Filters </h1>
-            </div>
-            <table className='table table-bordered justify-content-center align-items-center' style={{ width: "100%", height: "100px" }}>
-                <thead>
-                    <tr style={{ fontFamily: 'Cairo', fontSize: 20 }}>
-                        <th>State</th>
-                        <th>Priority</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><div>
-                            <div>
-                                <select name="" id="" className={styles.select}>
-                                    <option value="">All</option>
-                                    <option value="">Completed</option>
-                                    <option value="">Inprogress</option>
-                                </select>
+      <div className="text-center">
+        <h1> Filters </h1>
+      </div>
+      <table
+        className="table table-bordered justify-content-center align-items-center"
+        style={{ width: "100%", height: "100px" }}
+      >
+        <thead>
+          <tr style={{ fontFamily: "Cairo", fontSize: 20 }}>
+            <th>State</th>
+            <th>Priority</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div>
+                <select
+                  name="status"
+                  value={filters.status}
+                  onChange={handleFilterChange}
+                  className={styles.select}
+                >
+                  <option value="">All</option>
+                  <option value="To Do">To Do</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select
+                  name="priority"
+                  value={filters.priority}
+                  onChange={handleFilterChange}
+                  className={styles.select}
+                >
+                  <option value="">All</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <input
+                type="date"
+                name="date"
+                value={filters.date}
+                onChange={handleFilterChange}
+                className={styles.date}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+    </div>
+  );
+};
 
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                            <div>
-                                <div>
-                                    <select name="" id="" className={styles.select}>
-                                        <option value="">high</option>
-                                        <option value="">medium</option>
-                                        <option value="">low</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <input type="date" name="" id="" className={styles.date} />
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
-            <hr />
-        </div>
-    )
-}
-
-export default Filters
+export default Filters;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-import { Modal, Button } from 'react-bootstrap';
-import styles from '../../styles/home/Tasks.module.css';
+import React, { useState } from "react";
+import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { Modal, Button } from "react-bootstrap";
+import styles from "../../styles/home/Tasks.module.css";
 
 const TaskItem = ({
   task,
@@ -12,14 +12,14 @@ const TaskItem = ({
   // تحديد لون الـ badge بناءً على قيمة Priority
   const getPriorityBackgroundColor = (priority) => {
     switch (priority?.toLowerCase()) {
-      case 'high':
-        return '#ff3f61'; // أحمر فاتح
-      case 'medium':
-        return '#ffcc5c'; // أصفر فاتح
-      case 'low':
-        return '#88d8b0'; // أخضر فاتح
+      case "high":
+        return "#ff3f61"; // أحمر فاتح
+      case "medium":
+        return "#ffcc5c"; // أصفر فاتح
+      case "low":
+        return "#88d8b0"; // أخضر فاتح
       default:
-        return '#ffffff'; // أبيض (افتراضي)
+        return "#ffffff"; // أبيض (افتراضي)
     }
   };
 
@@ -43,8 +43,15 @@ const TaskItem = ({
       <tr key={task.id}>
         <td>{task.name}</td>
         <td>
-          <span className="badge rounded-pill"
-            style={{ backgroundColor: '#3ee6bc', color: '#000', padding: '10px 15px', borderRadius: '10px' }}>
+          <span
+            className="badge rounded-pill"
+            style={{
+              backgroundColor: "#3ee6bc",
+              color: "#000",
+              padding: "10px 15px",
+              borderRadius: "10px",
+            }}
+          >
             {task.category}
           </span>
         </td>
@@ -53,8 +60,8 @@ const TaskItem = ({
             className="badge rounded-pill"
             style={{
               backgroundColor: getPriorityBackgroundColor(task.priority),
-              color: '#000',
-              padding: '10px 15px',
+              color: "#000",
+              padding: "10px 15px",
             }}
           >
             {task.priority}
@@ -63,17 +70,20 @@ const TaskItem = ({
         <td>{task.date}</td>
         <td>
           <button className={styles.editBtn} onClick={() => handleEdit(task)}>
-            <FaEdit style={{ color: 'blue' }} />
+            <FaEdit style={{ color: "blue" }} />
           </button>
         </td>
         <td>
           <button className={styles.deleteBtn} onClick={handleShowDeleteModal}>
-            <FaTrash style={{ color: 'red' }} />
+            <FaTrash style={{ color: "red" }} />
           </button>
         </td>
         <td>
-          <button className={styles.editBtn} onClick={() => handleView(task.id)}>
-            <FaEye style={{ color: 'green' }} /> details
+          <button
+            className={styles.editBtn}
+            onClick={() => handleView(task._id)}
+          >
+            <FaEye style={{ color: "green" }} /> details
           </button>
         </td>
       </tr>
@@ -100,40 +110,6 @@ const TaskItem = ({
 };
 
 export default TaskItem;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from 'react';
 // import styles from './styles/Tasks.module.css';

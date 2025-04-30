@@ -1,20 +1,14 @@
 // TaskList.js
-import React from 'react';
-import TaskItem from './TaskItem';
+import React from "react";
+import TaskItem from "./TaskItem";
 
-const TaskList = ({
-  tasks,
-  loading,
-  handleEdit,
-  handleDelete,
-  handleView,
-}) => {
+const TaskList = ({ tasks, loading, handleEdit, handleDelete, handleView }) => {
   return (
     <div>
       {loading ? (
-        <p style={{ fontFamily: 'Cairo', fontSize: 20 }}>Loading tasks...</p>
+        <p style={{ fontFamily: "Cairo", fontSize: 20 }}>Loading tasks...</p>
       ) : tasks.length === 0 ? (
-        <p style={{ fontFamily: 'Cairo', fontSize: 20 }}>No tasks available.</p>
+        <p style={{ fontFamily: "Cairo", fontSize: 20 }}>No tasks available.</p>
       ) : (
         <table className="table text-center table-borderedless table-hover container-fluid">
           <thead>
@@ -31,7 +25,7 @@ const TaskList = ({
           <tbody>
             {tasks.map((task) => (
               <TaskItem
-                key={task.id}
+                key={task.id || `${task.name}-${task.category}-${task.date}`}
                 task={task}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}

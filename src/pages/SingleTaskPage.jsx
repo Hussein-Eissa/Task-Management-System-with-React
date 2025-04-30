@@ -15,16 +15,18 @@ const SingleTaskPage = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/tasks/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000/api/tasks/${id}`
+        );
         setTask(response.data);
       } catch (error) {
         console.error("Error fetching task:", error);
         setTask({
-          id: id,
+          _id: id,
           name: "Task " + id,
           status: "Not Started",
           priority: "Medium",
-          dueDate: new Date().toLocaleDateString(),
+          date: new Date().toLocaleDateString(),
           category: "General",
           keywords: [],
           details: "No details available",
@@ -96,7 +98,7 @@ const SingleTaskPage = () => {
             <Col md={6}>
               <div className="info-group">
                 <p>
-                  <strong>ID:</strong> {task.id}
+                  <strong>ID:</strong> {task._id}
                 </p>
                 <p>
                   <strong>Name:</strong> {task.name}
@@ -139,23 +141,23 @@ const SingleTaskPage = () => {
                   <strong>Category:</strong> {task.category}
                 </p>
                 <p>
-                  <strong>Keywords:</strong>{" "}
-                  <div className="keywords-container">
-                    {task.keywords &&
-                      task.keywords.map((keyword, index) => (
-                        <span
-                          key={index}
-                          className="keyword-tag"
-                          style={{
-                            backgroundColor: keyword.color || "#a3bffa",
-                            color: "#fff",
-                          }}
-                        >
-                          {keyword.text || keyword}
-                        </span>
-                      ))}
-                  </div>
+                  <strong>Keywords:</strong>
                 </p>
+                <div className="keywords-container">
+                  {task.keywords &&
+                    task.keywords.map((keyword, index) => (
+                      <span
+                        key={index}
+                        className="keyword-tag"
+                        style={{
+                          backgroundColor: keyword.color || "#a3bffa",
+                          color: "#fff",
+                        }}
+                      >
+                        {keyword.text || keyword}
+                      </span>
+                    ))}
+                </div>
               </div>
             </Col>
           </Row>
