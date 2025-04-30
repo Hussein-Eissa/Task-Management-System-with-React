@@ -19,7 +19,7 @@ const CategoryModal = ({ item }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch("http://localhost:3000/Category", {
+        fetch("http://localhost:3000/api/categories", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),

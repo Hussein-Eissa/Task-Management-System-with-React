@@ -15,7 +15,7 @@ const SingleTaskPage = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/tasks/${id}`);
+        const response = await axios.get(`http://localhost:3000/api/tasks/${id}`);
         setTask(response.data);
       } catch (error) {
         console.error("Error fetching task:", error);
@@ -37,7 +37,7 @@ const SingleTaskPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/tasks/${id}`);
+      await axios.delete(`http://localhost:3000/api/tasks/${id}`);
       toast.success("Task deleted successfully", {
         position: "top-right",
         autoClose: 3000,

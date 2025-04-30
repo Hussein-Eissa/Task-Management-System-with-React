@@ -12,7 +12,7 @@ export const ModalProvider = ({ children }) => {
 
     // 🟡 تحميل البيانات من API
     useEffect(() => {
-        fetch("http://localhost:3000/Category")
+        fetch("http://localhost:3000/api/categories")
         .then((res) => res.json())
         .then((data) => setCategories(data))
         .catch((err) => console.error("فشل في جلب البيانات:", err));
@@ -48,14 +48,14 @@ export const ModalProvider = ({ children }) => {
         setCategories(updated);
 
         // مثال لإرسال update:
-        fetch(`http://localhost:3000/Category/${formData.id}`, {
+        fetch(`http://localhost:3000/api/categories/${formData.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
         });
         } else {
         // إضافة جديد
-        fetch("http://localhost:3000/Category", {
+        fetch("http://localhost:3000/api/categories", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
@@ -70,7 +70,7 @@ export const ModalProvider = ({ children }) => {
     const deleteCategory = (index) => {
         const categoryToDelete = categories[index];
 
-        fetch(`http://localhost:3000/Category/${categoryToDelete.id}`, {
+        fetch(`http://localhost:3000/api/categories/${categoryToDelete.id}`, {
         method: "DELETE",
         }).then(() => {
         setCategories((prev) => prev.filter((_, i) => i !== index));

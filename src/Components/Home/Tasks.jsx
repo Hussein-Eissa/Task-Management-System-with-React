@@ -8,7 +8,7 @@ import TaskList from './TaskList';
 import Modal from './Modal';
 import '../../styles/home/Modal.css';
 
-const API_URL = 'http://localhost:3000/tasks';
+const API_URL = 'http://localhost:3000/api/tasks';
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);

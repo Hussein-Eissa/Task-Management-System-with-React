@@ -8,13 +8,11 @@ const ItemList = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Category")
+    fetch("http://localhost:3000/api/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((err) => console.error("فشل في جلب البيانات:", err));
   }, [])
-
-
 
   return (
     <div className="container">
