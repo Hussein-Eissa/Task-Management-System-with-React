@@ -34,7 +34,7 @@ const TaskItem = ({
 
   // تأكيد الحذف
   const confirmDelete = () => {
-    handleDelete(task.id); // تنفيذ دالة الحذف
+    handleDelete(task._id); // تنفيذ دالة الحذف
     handleCloseDeleteModal(); // إغلاق الـ Modal
   };
 

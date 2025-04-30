@@ -46,7 +46,13 @@ const Tasks = ({ searchQuery }) => {
           (task) =>
             task.name.toLowerCase().includes(query) ||
             task.category.toLowerCase().includes(query) ||
-            (task.details && task.details.toLowerCase().includes(query))
+            (task.details && task.details.toLowerCase().includes(query)) ||
+            (task.keywords &&
+              task.keywords.some((keyword) =>
+                typeof keyword === "string"
+                  ? keyword.toLowerCase().includes(query)
+                  : keyword.text.toLowerCase().includes(query)
+              ))
         );
       }
 
@@ -89,7 +95,13 @@ const Tasks = ({ searchQuery }) => {
         (task) =>
           task.name.toLowerCase().includes(query) ||
           task.category.toLowerCase().includes(query) ||
-          (task.details && task.details.toLowerCase().includes(query))
+          (task.details && task.details.toLowerCase().includes(query)) ||
+          (task.keywords &&
+            task.keywords.some((keyword) =>
+              typeof keyword === "string"
+                ? keyword.toLowerCase().includes(query)
+                : keyword.text.toLowerCase().includes(query)
+            ))
       );
     }
 

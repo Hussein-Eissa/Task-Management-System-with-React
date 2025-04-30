@@ -1,73 +1,71 @@
-
-.sideNav{
-    width: 300px;
-    height: 100%;
-    background-color: #6366F1;
-    color: white;
-    padding: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
-    font-size: 20px;
+.sideNav {
+  width: 300px;
+  height: 100%;
+  background-color: #6366f1;
+  color: white;
+  padding: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    Courier, monospace;
+  font-size: 20px;
 }
 
-
-.popup,.dash,.ListOfcat{
-    /* width: 80px;
+.popup,
+.dash,
+.ListOfcat {
+  /* width: 80px;
     height: 50px; */
-    background-color: #f1f1f1;
-    color: rgb(13, 6, 6);
-    width: 100%;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+  background-color: #f1f1f1;
+  color: rgb(13, 6, 6);
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 .toggleButton {
-    display: none; /* مخفي افتراضياً */
-     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    font-size: 24px;
-  }
-  
-  
- .dash:hover{
-    background-color: #4f46e5;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.ListOfcat:hover{
-    background-color: #4f46e5;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.popup:hover{
-    background-color: #4f46e5;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.list li{
-    margin: 10px 0;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  display: none; /* مخفي افتراضياً */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 24px;
 }
 
-.list li a{
-    text-decoration: none;
-    color: black;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-}  
+.dash:hover {
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.ListOfcat:hover {
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.popup:hover {
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-
+.list li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}

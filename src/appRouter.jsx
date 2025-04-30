@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import SingleTaskPage from "./pages/SingleTaskPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
+import EditTaskPage from "./pages/EditTaskPage";
 
 const Routes = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const Routes = createBrowserRouter([
   {
     path: "task/:id",
     element: <SingleTaskPage />,
+  },
+  {
+    path: "task/:id/edit",
+    element: <EditTaskPage />,
   },
   {
     path: "*",
