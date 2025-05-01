@@ -42,9 +42,19 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const updated = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updated) return res.status(404).json({ message: 'Category not found' });
-        res.json(updated);
+        const oldCategory = await Category.findById(req.params.id);
+        if (!oldCategory) return res.status(404).json({ message: 'Category not found' });
+
+        const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedCategory) return res.status(404).json({ message: 'Category update failed' });
+
+        // Update tasks that used the old category text
+        await Task.updateMany(
+            { category: oldCategory.text },
+            { category: updatedCategory.text }
+        );
+
+        res.json(updatedCategory);
     } catch (error) {
         res.status(500).json({ message: 'Error updating category', error: error.message });
     }
