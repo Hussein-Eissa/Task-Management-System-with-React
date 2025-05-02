@@ -28,8 +28,8 @@
  .logoIcon {
    background-color: #6366f1;
    color: white;
-   width: 30px;
-   height: 30px;
+   /* width: 30px; */
+   /* height: 10px; */
    border-radius: 50%;
    display: flex;
    align-items: center;

@@ -15,31 +15,31 @@ const ItemList = () => {
   }, [])
 
   return (
-    <div className="container">
-      {categories.length === 0 && <p className="d-none">No Category</p>}
-      <ul className="list-group">
+    <div className="container bg-white p-4 rounded shadow-sm mb-4">
+      {categories.length === 0 && <p className="d-none ">No Category</p>}
+      <ul className="list-group" style={{backgroundColor: '#f0f0f0',marginTop: '20px'}}>
         {categories.map((item, index) => (
           <li
             key={index}
-            className="list-group-item d-flex justify-content-between align-items-center"
+            className="list-group-item d-flex justify-content-between align-items-center border-0"
           >
-            <div>
+            <div cla>
               <span style={{ color: item.color }}>{item.text}</span>
             </div>
             <div>
               <button
                 className="btn btn-sm btn-outline-secondary me-2"
                 onClick={() => openModal(item, index)}
-                style={{ backgroundColor: "white" }}
+                style={{ backgroundColor: "white" ,border: 'none' }}
               >
                 <FaEdit style={{ color: 'blue' }} />
               </button>
               <button
                 className="btn btn-sm btn-outline-danger"
                 onClick={() => deleteCategory(index)}
-                style={{ backgroundColor: "white" }}
+                style={{ backgroundColor: "white" ,border:'none'}}
               >
-                <FaTrash style={{ color: 'red' }} />
+                <FaTrash style={{ color: 'red'}} />
               </button>
             </div>
           </li>
@@ -51,3 +51,5 @@ const ItemList = () => {
 };
 
 export default ItemList;
+
+

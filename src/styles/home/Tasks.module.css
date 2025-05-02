@@ -86,3 +86,11 @@ tbody tr td , thead tr th{
     border-radius: 10px;
     background-color: #6366F1 !important;
 }
+
+
+.taskItem:hover{
+    
+    color: white !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

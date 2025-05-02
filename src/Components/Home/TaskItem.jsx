@@ -40,7 +40,7 @@ const TaskItem = ({
 
   return (
     <>
-      <tr key={task.id}>
+      {/* <tr key={task.id}>
         <td>{task.name}</td>
         <td>
           <span
@@ -86,7 +86,83 @@ const TaskItem = ({
             <FaEye style={{ color: "green" }} /> details
           </button>
         </td>
-      </tr>
+      </tr> */}
+
+
+<div className="row">
+   
+
+<div className="card shadow h-100 mb-3 " style={{ maxWidth: "24rem" }}>
+
+      <div className="card-header bg-white border-bottom py-3">
+        <h4 className="card-title mb-0">{task.name}</h4>
+      </div>
+      <div className="card-body py-4  ">
+        <div className="mb-3">
+          <span
+            className="badge rounded-pill"
+            style={{
+              backgroundColor: "#3ee6bc",
+              color: "#000",
+              padding: "10px 15px",
+              fontSize: "1rem",
+            }}
+          >
+            {task.category}
+          </span>
+        </div>
+        <div className="mb-3">
+          <span
+            className="badge rounded-pill"
+            style={{
+              backgroundColor: getPriorityBackgroundColor(task.priority),
+              color: "#000",
+              padding: "10px 15px",
+              fontSize: "1rem",
+              // border:'none'
+            }}
+          >
+            {task.priority}
+          </span>
+        </div>
+        <div >
+          <span className="text-muted " style={{ fontSize: "1rem",color:'#000' }}>
+            {task.date}
+          </span>
+        </div>
+      </div>
+      <div className="card-footer bg-white border-top d-flex justify-content-between gap-3 py-3">
+        <button
+          className="btn btn-outline-primary d-flex align-items-center"
+          onClick={() => handleEdit(task)}
+          title="Edit"
+          style={{border:'none'}}
+        >
+          <FaEdit style={{ color: "blue", fontSize: "20px" }} />
+        </button>
+        <button
+          className="btn btn-outline-danger  d-flex align-items-center"
+          onClick={handleShowDeleteModal}
+          title="Delete"
+          style={{border:'none'}}
+        >
+          <FaTrash style={{ color: "red", fontSize: "20px" }} />
+        </button>
+        <button
+          className="btn btn-outline-success  d-flex align-items-center gap-2"
+          onClick={() => handleView(task._id)}
+          title="View Details"
+          style={{border:'none'}}
+        >
+          <FaEye style={{ color: "green", fontSize: "20px" }} />
+          {/* <span></span> */}
+        </button>
+      </div>
+</div>
+</div>
+    
+
+  
 
       {/* Modal التأكيد بتاع الحذف */}
       <Modal show={showDeleteModal} onHide={handleCloseDeleteModal} centered>

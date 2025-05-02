@@ -69,7 +69,7 @@ const SideNav = () => {
             <div>
               <div>
                 <ul className={styles.list}>
-                  <li>
+                  {/* <li>
                     <button className={styles.ListOfcat}>
                       <TbCategoryPlus /> Category
                     </button>
@@ -77,7 +77,28 @@ const SideNav = () => {
                       <ItemList />
                       <CategoryModal />
                     </div>
-                  </li>
+                  </li> */}
+
+<li className="nav-item dropdown">
+      <button
+        className={`nav-link dropdown-toggle ${styles.ListOfcat}`}
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        id="categoryDropdown"
+        
+      >
+        <TbCategoryPlus className="m-2  " /> All Category
+      </button>
+      <div className="dropdown-menu" aria-labelledby="categoryDropdown">
+        <div className="container p-3">
+          <ItemList style={{border:'none'}} />
+        </div>
+      </div>
+          <CategoryModal />
+    </li>
+
+
                 </ul>
               </div>
             </div>

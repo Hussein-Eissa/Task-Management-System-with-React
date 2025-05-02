@@ -31,7 +31,7 @@ const Filters = ({ onFilterChange }) => {
       >
         <thead>
           <tr style={{ fontFamily: "Cairo", fontSize: 20 }}>
-            <th>State</th>
+            <th>Status</th>
             <th>Priority</th>
             <th>Date</th>
           </tr>
