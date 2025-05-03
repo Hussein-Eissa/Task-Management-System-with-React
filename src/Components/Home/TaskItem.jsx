@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import { Modal, Button } from "react-bootstrap";
-import styles from "../../styles/home/Tasks.module.css";
+import { useModal } from "../../Context/CategoryContext";
 
 const TaskItem = ({
   task,
@@ -9,6 +9,13 @@ const TaskItem = ({
   handleDelete,
   handleView,
 }) => {
+  
+  const { categories } = useModal (); // جلب الـ categories من الـ Context
+  const getCategoryColor = (category) => {
+    const foundCategory = categories.find((cat) => cat.text === category);
+    return foundCategory ? foundCategory.color : "#3ee6bc"; // اللون الافتراضي
+  }
+  
   // تحديد لون الـ badge بناءً على قيمة Priority
   const getPriorityBackgroundColor = (priority) => {
     switch (priority?.toLowerCase()) {
@@ -40,59 +47,11 @@ const TaskItem = ({
 
   return (
     <>
-      {/* <tr key={task.id}>
-        <td>{task.name}</td>
-        <td>
-          <span
-            className="badge rounded-pill"
-            style={{
-              backgroundColor: "#3ee6bc",
-              color: "#000",
-              padding: "10px 15px",
-              borderRadius: "10px",
-            }}
-          >
-            {task.category}
-          </span>
-        </td>
-        <td>
-          <span
-            className="badge rounded-pill"
-            style={{
-              backgroundColor: getPriorityBackgroundColor(task.priority),
-              color: "#000",
-              padding: "10px 15px",
-            }}
-          >
-            {task.priority}
-          </span>
-        </td>
-        <td>{task.date}</td>
-        <td>
-          <button className={styles.editBtn} onClick={() => handleEdit(task)}>
-            <FaEdit style={{ color: "blue" }} />
-          </button>
-        </td>
-        <td>
-          <button className={styles.deleteBtn} onClick={handleShowDeleteModal}>
-            <FaTrash style={{ color: "red" }} />
-          </button>
-        </td>
-        <td>
-          <button
-            className={styles.editBtn}
-            onClick={() => handleView(task._id)}
-          >
-            <FaEye style={{ color: "green" }} /> details
-          </button>
-        </td>
-      </tr> */}
-
 
 <div className="row">
    
 
-<div className="card shadow h-100 mb-3 " style={{ maxWidth: "24rem" }}>
+<div className="card shadow h-100 mb-3 " style={{ maxWidth: "20rem" }}>
 
       <div className="card-header bg-white border-bottom py-3">
         <h4 className="card-title mb-0">{task.name}</h4>
@@ -102,8 +61,10 @@ const TaskItem = ({
           <span
             className="badge rounded-pill"
             style={{
-              backgroundColor: "#3ee6bc",
-              color: "#000",
+              // backgroundColor: getCategoryColor(task.category),
+              color: getCategoryColor(task.category),
+              border: "1px solid",
+              borderColor: getCategoryColor(task.category),
               padding: "10px 15px",
               fontSize: "1rem",
             }}
@@ -155,7 +116,6 @@ const TaskItem = ({
           style={{border:'none'}}
         >
           <FaEye style={{ color: "green", fontSize: "20px" }} />
-          {/* <span></span> */}
         </button>
       </div>
 </div>

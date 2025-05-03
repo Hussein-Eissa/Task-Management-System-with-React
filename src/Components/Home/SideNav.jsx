@@ -46,19 +46,14 @@ const SideNav = () => {
   // };
 
   return (
-    <div>
-       <button 
+    <div className="min-vh-100 d-flex flex-column justify-content-between">
+      <button 
         className={`${styles.popup} ${styles.toggleButton}`} 
         onClick={toggleSideNav}
         aria-label="Toggle navigation menu"
       >
         {isOpen ? <FiX size={24} /> : <FiAlignJustify size={24} />}
       </button>
-      
-      {/* <button className={styles.popup} onClick={togglePopup}>
-        {isOpen ? <FiX size={24} /> : <FiAlignJustify size={24} />}
-      </button> */}
-      {/* {isOpen && ( */}
         {isOpen && (
           <section className={styles.sideNav}>
           <div>
@@ -78,33 +73,29 @@ const SideNav = () => {
                       <CategoryModal />
                     </div>
                   </li> */}
-
-<li className="nav-item dropdown">
-      <button
-        className={`nav-link dropdown-toggle ${styles.ListOfcat}`}
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        id="categoryDropdown"
-        
-      >
-        <TbCategoryPlus className="m-2  " /> All Category
-      </button>
-      <div className="dropdown-menu" aria-labelledby="categoryDropdown">
-        <div className="container p-3">
-          <ItemList style={{border:'none'}} />
-        </div>
-      </div>
-          <CategoryModal />
-    </li>
-
-
+                  <li className="nav-item dropdown">
+                    <button
+                      className={`nav-link dropdown-toggle ${styles.ListOfcat}`}
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      id="categoryDropdown"
+                    >
+                      <TbCategoryPlus className="m-2  " /> All Category
+                    </button>
+                    <div className="dropdown-menu w-100" aria-labelledby="categoryDropdown">
+                      <div className="container w-100 p-0">
+                        <ItemList style={{border:'none'}} />
+                      </div>
+                    </div>
+                        <CategoryModal />
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
-       )} 
+      )} 
     </div>
   );
 };
