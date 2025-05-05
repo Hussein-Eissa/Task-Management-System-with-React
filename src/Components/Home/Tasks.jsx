@@ -11,7 +11,7 @@ import "../../styles/home/Modal.css";
 
 const API_URL = "http://localhost:3000/api/tasks";
 
-const Tasks = ({ searchQuery }) => {
+const Tasks = ({ searchQuery, selectedCategory }) => {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,13 @@ const Tasks = ({ searchQuery }) => {
     if (tasks.length > 0) {
       let filtered = [...tasks];
 
+      // Apply category filter
+      if (selectedCategory) {
+        filtered = filtered.filter(
+          (task) => task.category === selectedCategory
+        );
+      }
+
       // Apply search filter
       if (searchQuery && searchQuery.trim() !== "") {
         const query = searchQuery.toLowerCase();
@@ -58,7 +65,7 @@ const Tasks = ({ searchQuery }) => {
 
       setFilteredTasks(filtered);
     }
-  }, [searchQuery, tasks]);
+  }, [searchQuery, tasks, selectedCategory]);
 
   const fetchTasks = async () => {
     try {
@@ -86,6 +93,11 @@ const Tasks = ({ searchQuery }) => {
 
     if (filters.date) {
       filtered = filtered.filter((task) => task.date === filters.date);
+    }
+
+    // Apply category filter
+    if (selectedCategory) {
+      filtered = filtered.filter((task) => task.category === selectedCategory);
     }
 
     // Apply search filter

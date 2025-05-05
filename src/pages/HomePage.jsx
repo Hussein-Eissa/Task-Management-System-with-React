@@ -6,18 +6,26 @@ import Navbar from "../Components/Home/Navbar";
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleSearchChange = (query) => {
     setSearchQuery(query);
   };
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div>
       <div className="containers">
-        <SideNav />
+        <SideNav onCategorySelect={handleCategorySelect} />
         <div className="items">
           <Navbar onSearchChange={handleSearchChange} />
-          <Tasks searchQuery={searchQuery} />
+          <Tasks
+            searchQuery={searchQuery}
+            selectedCategory={selectedCategory}
+          />
         </div>
       </div>
     </div>
