@@ -63,10 +63,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
     font-size: 1rem;
 }
-.editBtn:hover{
-    background-color: #6366f1;
-    color: white;
-}
+
 .deleteBtn:hover{
     background-color: #6366F1;
     color: white;
@@ -93,4 +90,22 @@ tbody tr td , thead tr th{
     color: white !important;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+
+.addbtn{
+    background-color: #484adb;
+    width: 100%;
+    padding: 13px;    
+    color: white;
+    font-Weight:bold;
+    font-Size: 1.25rem;
+    border: none;
+    margin-top: 15px;
+    margin-Bottom:15px;
+    border-radius: 3.125rem;
+}
+.addbtn:hover{
+    background-color: #5759e7;
+    color: white;
 }

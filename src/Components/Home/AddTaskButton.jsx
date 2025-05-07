@@ -7,15 +7,8 @@ const AddTaskButton = ({ onClick }) => {
   return (
     <div className="d-flex justify-content-center mt-4">
       <button
-        className={styles.editBtn}
+        className={styles.addbtn}
         onClick={onClick}
-        style={{
-          fontWeight: 'bold',
-          fontSize: 20,
-          border: 'none',
-          maxWidth: '75%',
-          marginBottom: '20px',
-        }}
       >
         <MdAddCircleOutline /> Add Task
       </button>
