@@ -8,16 +8,20 @@ import TaskList from "./TaskList";
 import Modal from "./Modal";
 import Filters from "./Filters";
 import "../../styles/home/Modal.css";
+import { useModal } from "../../Context/CategoryContext";
+
+
 
 const API_URL = "http://localhost:3000/api/tasks";
 
 const Tasks = ({ searchQuery, selectedCategory }) => {
+  const { refreshTasksTrigger } = useModal();
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false); // State لتحديد إذا كنا في وضع التعديل
-  const [taskToEdit, setTaskToEdit] = useState(null); // State لتخزين بيانات المهمة اللي هنعدلها
+  const [isEditing, setIsEditing] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState(null);
   const [newTask, setNewTask] = useState({
     name: "",
     category: "",
@@ -32,21 +36,18 @@ const Tasks = ({ searchQuery, selectedCategory }) => {
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [refreshTasksTrigger]);
 
-  // Add effect to handle search and filters
   useEffect(() => {
     if (tasks.length > 0) {
       let filtered = [...tasks];
 
-      // Apply category filter
       if (selectedCategory) {
         filtered = filtered.filter(
           (task) => task.category === selectedCategory
         );
       }
 
-      // Apply search filter
       if (searchQuery && searchQuery.trim() !== "") {
         const query = searchQuery.toLowerCase();
         filtered = filtered.filter(
@@ -64,6 +65,8 @@ const Tasks = ({ searchQuery, selectedCategory }) => {
       }
 
       setFilteredTasks(filtered);
+    } else {
+      setFilteredTasks([]); // لو مفيش tasks، نضمن إن filteredTasks تكون فاضية
     }
   }, [searchQuery, tasks, selectedCategory]);
 
@@ -95,12 +98,10 @@ const Tasks = ({ searchQuery, selectedCategory }) => {
       filtered = filtered.filter((task) => task.date === filters.date);
     }
 
-    // Apply category filter
     if (selectedCategory) {
       filtered = filtered.filter((task) => task.category === selectedCategory);
     }
 
-    // Apply search filter
     if (searchQuery && searchQuery.trim() !== "") {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -121,17 +122,47 @@ const Tasks = ({ searchQuery, selectedCategory }) => {
   };
 
   const handleEdit = (task) => {
-    setIsEditing(true); // تفعيل وضع التعديل
-    setTaskToEdit(task); // تخزين بيانات المهمة
-    setNewTask(task); // ملء الحقول في الـ Modal ببيانات المهمة
-    setIsModalOpen(true); // فتح الـ Modal
+    setIsEditing(true);
+    setTaskToEdit(task);
+    setNewTask(task);
+    setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
       toast.success("Task deleted");
-      setTasks((prev) => prev.filter((task) => task._id !== id));
+      
+      // تحديث الـ tasks
+      setTasks((prev) => {
+        const updatedTasks = prev.filter((task) => task._id !== id);
+        
+        // تحديث الـ filteredTasks بناءً على الـ updatedTasks
+        let filtered = [...updatedTasks];
+        if (selectedCategory) {
+          filtered = filtered.filter(
+            (task) => task.category === selectedCategory
+          );
+        }
+        if (searchQuery && searchQuery.trim() !== "") {
+          const query = searchQuery.toLowerCase();
+          filtered = filtered.filter(
+            (task) =>
+              task.name.toLowerCase().includes(query) ||
+              task.category.toLowerCase().includes(query) ||
+              (task.details && task.details.toLowerCase().includes(query)) ||
+              (task.keywords &&
+                task.keywords.some((keyword) =>
+                  typeof keyword === "string"
+                    ? keyword.toLowerCase().includes(query)
+                    : keyword.text.toLowerCase().includes(query)
+                ))
+          );
+        }
+        setFilteredTasks(filtered);
+        
+        return updatedTasks;
+      });
     } catch (error) {
       toast.error("Error deleting task");
       console.error(error);

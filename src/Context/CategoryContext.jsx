@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ModalContext = createContext();
@@ -9,6 +8,7 @@ export const ModalProvider = ({ children }) => {
   const [formData, setFormData] = useState({ text: "", color: "#000000" });
   const [categories, setCategories] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+  const [refreshTasksTrigger, setRefreshTasksTrigger] = useState(0); // State جديد لتحديث الـ Tasks
 
   // تحميل البيانات من API
   useEffect(() => {
@@ -63,6 +63,7 @@ export const ModalProvider = ({ children }) => {
         const newItem = await response.json();
         setCategories((prev) => [...prev, newItem]);
       }
+      setRefreshTasksTrigger((prev) => prev + 1); // Trigger تحديث الـ Tasks
       closeModal();
     } catch (err) {
       console.error("فشل في العملية:", err);
@@ -76,6 +77,7 @@ export const ModalProvider = ({ children }) => {
         method: "DELETE",
       });
       setCategories((prev) => prev.filter((_, i) => i !== index));
+      setRefreshTasksTrigger((prev) => prev + 1); // Trigger تحديث الـ Tasks
     } catch (err) {
       console.error("فشل في الحذف:", err);
     }
@@ -92,6 +94,7 @@ export const ModalProvider = ({ children }) => {
         handleSubmit,
         categories,
         deleteCategory,
+        refreshTasksTrigger, // أضفنا ده للـ Context
       }}
     >
       {children}
